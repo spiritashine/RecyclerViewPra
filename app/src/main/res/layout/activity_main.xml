@@ -14,37 +14,64 @@
         >
         <android.support.v7.widget.Toolbar
             app:title="たかしま"
-            app:layout_scrollFlags="scroll|enterAlways"
+            app:layout_scrollFlags="scroll|enterAlways|snap"
             android:background="#999"
             android:id="@+id/Toolbar_a"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+        <android.support.design.widget.TabLayout
+            android:background="#aa0"
+            android:id="@+id/tablayout_a"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="20dp"
-        app:srcCompat="@android:drawable/ic_menu_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
-        <LinearLayout
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <android.support.design.widget.TabLayout
-                android:background="#aa0"
-                android:id="@+id/tablayout_a"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
             <android.support.v4.view.ViewPager
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 android:background="#0aa"
                 android:id="@+id/viewpager_a"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+    <android.support.design.widget.FloatingActionButton
+        app:layout_behavior="com.hujie.recyclerviewpra.MyFloatingBehavior"
+        android:id="@+id/fab"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="50dp"
+        android:layout_marginRight="20dp"
+        app:srcCompat="@android:drawable/ic_menu_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <RadioGroup
+        app:behavior_hideable="true"
+        android:id="@+id/navigation"
+        android:orientation="vertical"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        android:background="#a0a"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RadioButton
+            style="@style/RadioButton"
+            android:text="あい"
+            />
+            <RadioButton
+                style="@style/RadioButton"
+                android:text="かけ"
+                />
+            <RadioButton
+                style="@style/RadioButton"
+                android:text="さす"
+                />
+            <RadioButton
+                style="@style/RadioButton"
+                android:text="らり"
+                />
         </LinearLayout>
-
+    </RadioGroup>
 
 </android.support.design.widget.CoordinatorLayout>

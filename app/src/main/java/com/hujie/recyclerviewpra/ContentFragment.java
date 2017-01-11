@@ -37,7 +37,7 @@ public class ContentFragment extends Fragment {
         recyclerView.setLayoutManager(manager);
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(),1));
         ArrayList<String> data=new ArrayList<>();
-        for (int i=0;i<40;i++){
+        for (int i=0;i<100;i++){
             data.add("おねえさん"+i);
         }
         final MyRecyclerViewAdapter adapter = new MyRecyclerViewAdapter(getContext(), data);

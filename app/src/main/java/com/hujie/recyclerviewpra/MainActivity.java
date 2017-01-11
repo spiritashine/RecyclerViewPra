@@ -9,6 +9,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
+import android.widget.RadioGroup;
 
 import java.util.ArrayList;
 
@@ -29,6 +30,21 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
         viewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(),this,fragments));
 
+        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.navigation);
+        final BottomSheetBehavior bottomSheetBehavior=BottomSheetBehavior.from(radioGroup);
 
+        FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
+
+        MyFloatingBehavior<FloatingActionButton> myFloatingBehavior=MyFloatingBehavior.from(floatingActionButton);
+        myFloatingBehavior.setOnStateChangeListener(new MyFloatingBehavior.OnStateChangeListener() {
+            @Override
+            public void onStateChange(boolean isShow) {
+                if (isShow){
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                }else {
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+                }
+            }
+        });
     }
 }
