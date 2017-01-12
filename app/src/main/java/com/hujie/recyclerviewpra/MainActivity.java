@@ -1,11 +1,9 @@
 package com.hujie.recyclerviewpra;
 
-import android.os.Handler;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
@@ -31,11 +29,13 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(),this,fragments));
 
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.navigation);
+        //通过BottomSheetBehavior的from方法设置底部导航
         final BottomSheetBehavior bottomSheetBehavior=BottomSheetBehavior.from(radioGroup);
 
         FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
 
         MyFloatingBehavior<FloatingActionButton> myFloatingBehavior=MyFloatingBehavior.from(floatingActionButton);
+        //回调接口，通过FloatingActionButton的属性设置底部导航
         myFloatingBehavior.setOnStateChangeListener(new MyFloatingBehavior.OnStateChangeListener() {
             @Override
             public void onStateChange(boolean isShow) {

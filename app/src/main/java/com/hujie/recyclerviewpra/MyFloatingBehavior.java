@@ -16,10 +16,7 @@ import android.view.animation.Interpolator;
  */
 
 public class MyFloatingBehavior<V extends View> extends FloatingActionButton.Behavior {
-    private Interpolator INTERPOLATOR=new FastOutLinearInInterpolator();
-    private boolean mIsAnimatingOut=false;
     private boolean isShow=false;
-    private boolean ishide=false;
 
     public MyFloatingBehavior(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -37,15 +34,15 @@ public class MyFloatingBehavior<V extends View> extends FloatingActionButton.Beh
 
             animaOut(child);
             isShow=true;
-            ishide=false;
+
             if (listener!=null){
                 listener.onStateChange(false);
             }
-        }else if (dyConsumed<0 && !ishide){
+        }else if (dyConsumed<0 && isShow){
 
             animaIn(child);
             isShow=false;
-            ishide=true;
+
             if (listener!=null){
                 listener.onStateChange(true);
             }
@@ -78,6 +75,11 @@ public class MyFloatingBehavior<V extends View> extends FloatingActionButton.Beh
         }
         return (MyFloatingBehavior<V>) behavior;
     }
+
+    /**
+     * 接口回调
+     * 回调参数isShow把FloatingActionBar的显示隐藏状态传递出去
+     */
 
     private OnStateChangeListener listener;
 
